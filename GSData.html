@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			.container {
+				margin: auto:
+				width: 1100px;
+			}
+			
+			.head {
+				float: center;
+				width: 100%;
+				text-align: center;
+				clear: both;
+			}
+			
+			.stats {
+				float: left;
+				width: 50%;
+				height: 100%;
+				text-align: center;
+			}
+			
+			.info {
+				float: right;
+				width: 50%;
+				text-align: center;
+				}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="head">
+				<h1> Black Desert Online Gear Score Data</h1>
+				<h2>Number of Entries</h2>
+				<p id="totalPolled"></p>
+			</div>
+			<div class = "stats">
+				<h2>Average Level</h2>
+				<p id="lvl"></p>
+				<h2>Average Awakened AP</h2>
+				<p id="aap"></p>
+				<h2>Average AP</h2>
+				<p id="ap"></p>
+				<h2>Average DP</h2>
+				<p id="dp"></p>
+				<h2>Average Gear Score</h2>
+				<p id="gs"></p>
+			</div>
+			<div class="info">
+				<h2>Number of Berserker</h2>
+				<p id="zerk"></p>
+				<h2>Number of Ninja</h2>
+				<p id="ninja"></p>
+				<h2>Number of Kunoichi</h2>
+				<p id="kuno"></p>
+				<h2>Number of Musa</h2>
+				<p id="musa"></p>
+				<h2>Number of Maehwa</h2>
+				<p id="mae"></p>
+				<h2>Number of Ranger</h2>
+				<p id="ranger"></p>
+				<h2>Number of Warrior</h2>
+				<p id="warrior"></p>
+				<h2>Number of Valkyrie</h2>
+				<p id="valk"></p>
+				<h2>Number of Wizard</h2>
+				<p id="wiz"></p>
+				<h2>Number of Witch</h2>
+				<p id = "witch"></p>
+				<h2>Number of Tamer</h2>
+				<p id="tamer"></p>
+				<h2>Number of Dark Knight</h2>
+				<p id="dk"></p>
+				<h2>Number of Striker</h2>
+				<p id="striker"></p>
+				<h2>Number of Sorceress</h2>
+				<p id="sorc"></p>
+			</div>
+		</div>
+	</body>
+	<script src="GearScoreData.js"></script>
+	<script>
+		var lvl = 0;
+		var aap = 0;
+		var ap = 0;
+		var dp = 0;
+		var gearScore = 0;
+		var averageLvl;
+		var averageAAP;
+		var averageAP;
+		var averageDP;
+		var averageGS;
+		var classBerserker = 0;
+		var classDarkKnight = 0;
+		var classNinja = 0;
+		var classKunoichi = 0;
+		var classMusa = 0;
+		var classMaehwa = 0;
+		var classWitch = 0;
+		var classWizard = 0;
+		var classStriker = 0;
+		var classTamer = 0;
+		var classRanger = 0;
+		var classSorceress = 0;
+		var classValkyrie = 0;
+		var classWarrior = 0;
+		var total = gearScore_Array.length;
+		
+		for (i = 0; i < gearScore_Array.length;i++) {
+			lvl += gearScore_Array[i].Level;
+			aap += gearScore_Array[i].AAP;
+			ap += gearScore_Array[i].AP;
+			dp += gearScore_Array[i].DP;
+			gearScore += gearScore_Array[i].GS;
+			if (gearScore_Array[i].Class == "Berserker") {classBerserker += 1;}
+			if (gearScore_Array[i].Class == "DK") {classDarkKnight += 1;}
+			if (gearScore_Array[i].Class == "Ninja") {classNinja += 1;}
+			if (gearScore_Array[i].Class == "Kunoichi") {classKunoichi += 1;}
+			if (gearScore_Array[i].Class == "Musa") {classMusa += 1;}
+			if (gearScore_Array[i].Class == "Maewha") {classMaehwa += 1;}
+			if (gearScore_Array[i].Class == "Witch") {classWitch += 1;}
+			if (gearScore_Array[i].Class == "Wizard") {classWizard += 1;}
+			if (gearScore_Array[i].Class == "Striker") {classStriker += 1;}
+			if (gearScore_Array[i].Class == "Tamer") {classTamer += 1;}
+			if (gearScore_Array[i].Class == "Ranger") {classRanger += 1;}
+			if (gearScore_Array[i].Class == "Sorceress") {classSorceress += 1;}
+			if (gearScore_Array[i].Class == "Valkyrie") {classValkyrie += 1;}
+			if (gearScore_Array[i].Class == "Warrior") {classWarrior += 1;}
+		}
+		
+		averageLvl = lvl / (gearScore_Array.length);
+		averageAAP = aap / (gearScore_Array.length);
+		averageAP = ap / (gearScore_Array.length);
+		averageDP = dp / (gearScore_Array.length);
+		averageGS = gearScore / (gearScore_Array.length);
+		
+		document.getElementById("lvl").innerHTML = Math.round(averageLvl);
+		document.getElementById("aap").innerHTML = Math.round(averageAAP);
+		document.getElementById("ap").innerHTML = Math.round(averageAP);
+		document.getElementById("dp").innerHTML = Math.round(averageDP);
+		document.getElementById("gs").innerHTML = Math.round(averageGS);
+		document.getElementById("zerk").innerHTML = classBerserker;
+		document.getElementById("ninja").innerHTML = classNinja;
+		document.getElementById("dk").innerHTML = classDarkKnight;
+		document.getElementById("valk").innerHTML = classValkyrie;
+		document.getElementById("wiz").innerHTML = classWizard;
+		document.getElementById("witch").innerHTML = classWitch;
+		document.getElementById("warrior").innerHTML = classWarrior;
+		document.getElementById("striker").innerHTML = classStriker;
+		document.getElementById("sorc").innerHTML = classSorceress;
+		document.getElementById("tamer").innerHTML = classTamer;
+		document.getElementById("musa").innerHTML = classMusa;
+		document.getElementById("mae").innerHTML = classMaehwa;
+		document.getElementById("kuno").innerHTML = classKunoichi;
+		document.getElementById("ranger").innerHTML = classRanger;
+		document.getElementById("totalPolled").innerHTML = total;
+	</script>
+</html>
